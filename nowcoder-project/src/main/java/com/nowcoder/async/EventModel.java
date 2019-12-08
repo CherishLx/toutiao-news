@@ -5,24 +5,26 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by nowcoder on 2016/7/14.
+ * 封装了事件模型EventModel
  */
 public class EventModel {
-    private EventType type;
-    private int actorId;
+    private EventType type;//事件类型
+    private int actorId;//事件的发起人
     private int entityId;
     private int entityType;
-    private int entityOwnerId;
-    private Map<String, String> exts = new HashMap<>();
+    private int entityOwnerId;//事件的拥有者
+    private Map<String, String> exts = new HashMap<>();//?
 
-    public Map<String, String> getExts() {
-        return exts;
-    }
     public EventModel() {
 
     }
+
     public EventModel(EventType type) {
         this.type = type;
+    }
+
+    public Map<String, String> getExts() {
+        return exts;
     }
 
     public String getExt(String name) {

@@ -7,8 +7,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import java.util.ArrayList;
+
 /**
- * Created by nowcoder on 2016/7/3.
+ * 配置拦截器interceptor
  */
 @Component
 public class ToutiaoWebConfiguration extends WebMvcConfigurerAdapter {

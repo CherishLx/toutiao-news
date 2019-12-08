@@ -4,7 +4,7 @@ import com.nowcoder.model.User;
 import org.apache.ibatis.annotations.*;
 
 /**
- * Created by nowcoder on 2016/7/2.
+ * 用户DAO层
  */
 @Mapper
 public interface UserDAO {
@@ -12,6 +12,7 @@ public interface UserDAO {
     String INSET_FIELDS = " name, password, salt, head_url ";
     String SELECT_FIELDS = " id, name, password, salt, head_url";
 
+    /*#是下面参数的属性，比如user.name*/
     @Insert({"insert into ", TABLE_NAME, "(", INSET_FIELDS,
             ") values (#{name},#{password},#{salt},#{headUrl})"})
     int addUser(User user);

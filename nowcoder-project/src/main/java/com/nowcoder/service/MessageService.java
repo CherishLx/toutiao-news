@@ -1,33 +1,26 @@
 package com.nowcoder.service;
 
-import com.nowcoder.dao.MessageDAO;
 import com.nowcoder.model.Message;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 /**
- * Created by nowcoder on 2016/7/9.
+ * messageService层
  */
-@Service
-public class MessageService {
-    @Autowired
-    MessageDAO messageDAO;
-    public int addMessage(Message message) {
-        return messageDAO.addMessage(message);
-    }
+public interface MessageService {
 
-    public List<Message> getConversationDetail(String conversationId, int offset, int limit) {
-        return messageDAO.getConversationDetail(conversationId, offset, limit);
-    }
+    int addMessage(Message message);
 
-    public List<Message> getConversationList(int userId, int offset, int limit) {
-        return messageDAO.getConversationList(userId, offset, limit);
-    }
+    int deleteMessage(String conversationId);
 
-    public int getConvesationUnreadCount(int userId, String conversationId) {
-        return messageDAO.getConvesationUnreadCount(userId, conversationId);
-    }
+    int deleteMessageById(int id);
+
+    List<Message> getConversationList(int userId, int offset, int limit);
+
+    List<Message> getConversationDetail(String conversationId, int offset, int limit);
+
+    int getUnreadCount(int userId, String conversationId);
+
+    int updateMessageHasRead(int hasRead, String conversationId);
+
+    Message getMessageById(int id);
 }

@@ -3,87 +3,79 @@ package com.nowcoder.model;
 import java.util.Date;
 
 /**
- * Created by rainday on 16/6/30.
+ * 咨询news
  */
 public class News {
+    private int id;
+    private String title;
+    private String link;
+    private String image;
+    private int likeCount;
+    private int commentCount;//?news的评论数量
+    private Date createdDate;
+    private int userId;//发布人ID
 
-  private int id;
+    public int getId() {
+      return id;
+    }
 
-  private String title;
+    public void setId(int id) {
+      this.id = id;
+    }
 
-  private String link;
+    public String getTitle() {
+      return title;
+    }
 
-  private String image;
+    public void setTitle(String title) {
+      this.title = title;
+    }
 
-  private int likeCount;
+    public String getLink() {
+      return link;
+    }
 
-  private int commentCount;
+    public void setLink(String link) {
+      this.link = link;
+    }
 
-  private Date createdDate;
+    public String getImage() {
+      return image;
+    }
 
-  private int userId;
+    public void setImage(String image) {
+      this.image = image;
+    }
 
-  public int getId() {
-    return id;
-  }
+    public int getLikeCount() {
+      return likeCount;
+    }
 
-  public void setId(int id) {
-    this.id = id;
-  }
+    public void setLikeCount(int likeCount) {
+      this.likeCount = likeCount;
+    }
 
-  public String getTitle() {
-    return title;
-  }
+    public int getCommentCount() {
+      return commentCount;
+    }
 
-  public void setTitle(String title) {
-    this.title = title;
-  }
+    public void setCommentCount(int commentCount) {
+      this.commentCount = commentCount;
+    }
 
-  public String getLink() {
-    return link;
-  }
+    public Date getCreatedDate() {
+      return createdDate;
+    }
 
-  public void setLink(String link) {
-    this.link = link;
-  }
+    public void setCreatedDate(Date createdDate) {
+      this.createdDate = createdDate;
+    }
 
-  public String getImage() {
-    return image;
-  }
+    public int getUserId() {
+      return userId;
+    }
 
-  public void setImage(String image) {
-    this.image = image;
-  }
-
-  public int getLikeCount() {
-    return likeCount;
-  }
-
-  public void setLikeCount(int likeCount) {
-    this.likeCount = likeCount;
-  }
-
-  public int getCommentCount() {
-    return commentCount;
-  }
-
-  public void setCommentCount(int commentCount) {
-    this.commentCount = commentCount;
-  }
-
-  public Date getCreatedDate() {
-    return createdDate;
-  }
-
-  public void setCreatedDate(Date createdDate) {
-    this.createdDate = createdDate;
-  }
-
-  public int getUserId() {
-    return userId;
-  }
-
-  public void setUserId(int userId) {
-    this.userId = userId;
-  }
+    public void setUserId(int userId) {
+      this.userId = userId;
+    }
 }

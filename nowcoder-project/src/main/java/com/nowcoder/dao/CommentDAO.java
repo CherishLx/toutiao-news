@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 
 /**
- * Created by nowcoder on 2016/7/9.
+ * 评论DAO层
  */
 @Mapper
 public interface CommentDAO {
@@ -18,13 +18,16 @@ public interface CommentDAO {
             ") values (#{userId},#{content},#{createdDate},#{entityId},#{entityType},#{status})"})
     int addComment(Comment comment);
 
+    /*更新评论状态？0有效，1无效*/
     @Update({"update ", TABLE_NAME, " set status=#{status} where entity_id=#{entityId} and entity_type=#{entityType}"})
     void updateStatus(@Param("entityId") int entityId, @Param("entityType") int entityType, @Param("status") int status);
 
+    /*通过entityId和entityType查询评论列表*/
     @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME,
             " where entity_id=#{entityId} and entity_type=#{entityType} order by id desc"})
     List<Comment> selectByEntity(@Param("entityId") int entityId, @Param("entityType") int entityType);
 
+    /*获取评论数量*/
     @Select({"select count(id) from ", TABLE_NAME, " where entity_id=#{entityId} and entity_type=#{entityType} "})
     int getCommentCount(@Param("entityId") int entityId, @Param("entityType") int entityType);
 }

@@ -9,13 +9,13 @@ import java.security.MessageDigest;
 import java.util.Map;
 
 /**
- * Created by nowcoder on 2016/7/3.
+ * 工具类，图片格式验证？，返回JSON字符串，MD5加密
  */
 public class ToutiaoUtil {
     private static final Logger logger = LoggerFactory.getLogger(ToutiaoUtil.class);
 
     public static String TOUTIAO_DOMAIN = "http://127.0.0.1:8080/";
-    public static String IMAGE_DIR = "D:/upload/";
+    public static String IMAGE_DIR = "D:\\upload\\";//这里我改了一下/为\\
     public static String[] IMAGE_FILE_EXTD = new String[] {"png", "bmp", "jpg", "jpeg"};
 
     public static boolean isFileAllowed(String fileName) {
@@ -26,6 +26,9 @@ public class ToutiaoUtil {
         }
         return false;
     }
+    /*下面是和JSON相关的部分
+    * 常用的方法是getJSONObject,toJSONString
+    * code为0表示成功，为1表示失败*/
     public static String getJSONString(int code) {
         JSONObject json = new JSONObject();
         json.put("code", code);
@@ -48,6 +51,7 @@ public class ToutiaoUtil {
         return json.toJSONString();
     }
 
+    /*MD5加密方法，给password加密用*/
     public static String MD5(String key) {
         char hexDigits[] = {
                 '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'

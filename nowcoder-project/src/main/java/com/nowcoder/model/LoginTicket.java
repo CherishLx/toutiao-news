@@ -3,12 +3,12 @@ package com.nowcoder.model;
 import java.util.Date;
 
 /**
- * Created by nowcoder on 2016/7/3.
+ * LoginTicket类，起token的作用，注册登陆成功的用户会服务器会发送一个ticket，过期后，重新注册登陆成功，再次发送一个ticket
  */
 public class LoginTicket {
     private int id;
     private int userId;
-    private Date expired;
+    private Date expired;//过期时间
     private int status;// 0有效，1无效
     private String ticket;
 

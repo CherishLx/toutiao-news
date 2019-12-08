@@ -1,7 +1,8 @@
 package com.nowcoder.async;
 
 /**
- * Created by nowcoder on 2016/7/14.
+ * 枚举类enum
+ * 事件的类型，点赞，评论，登录，发送邮件
  */
 public enum EventType {
     LIKE(0),
@@ -10,9 +11,11 @@ public enum EventType {
     MAIL(3);
 
     private int value;
+
     EventType(int value) {
         this.value = value;
     }
+
     public int getValue() {
         return value;
     }

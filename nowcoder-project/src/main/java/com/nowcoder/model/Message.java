@@ -3,16 +3,16 @@ package com.nowcoder.model;
 import java.util.Date;
 
 /**
- * Created by nowcoder on 2016/7/9.
+ * 站内信message，私发
  */
 public class Message {
     private int id;
     private int fromId;
     private int toId;
-    private String content;
+    private String content;//内容
     private Date createdDate;
-    private int hasRead;
-    private String conversationId;
+    private int hasRead;//0是没读，1是读了
+    private String conversationId;//conversationId是由对话的双方id组成
 
     public int getId() {
         return id;
@@ -62,10 +62,12 @@ public class Message {
         this.hasRead = hasRead;
     }
 
+    /*始终保持前小后大，个人感觉应该没有前小后大这个限制*/
     public String getConversationId() {
-        if (fromId < toId) {
-            return String.format("%d_%d", fromId, toId);
-        }
-        return String.format("%d_%d", toId, fromId);
+        return conversationId;
+    }
+
+    public void setConversationId(String conversationId) {
+        this.conversationId = conversationId;
     }
 }

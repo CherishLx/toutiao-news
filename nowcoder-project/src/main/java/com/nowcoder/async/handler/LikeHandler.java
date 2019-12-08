@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by nowcoder on 2016/7/14.
+ * 点赞事件处理器
  */
 @Component
 public class LikeHandler implements EventHandler {
@@ -31,10 +31,11 @@ public class LikeHandler implements EventHandler {
         User user = userService.getUser(model.getActorId());
         message.setToId(model.getEntityOwnerId());
         message.setContent("用户" + user.getName() +
-                " 赞了你的资讯,http://127.0.0.1:8080/news/"
-                + String.valueOf(model.getEntityId()));
-        // SYSTEM ACCOUNT
+                " 赞了你的资讯,/news/"
+                + model.getEntityId());
+        // SYSTEM ACCOUNT，匿名用户（好像有点问题，3表示匿名用户）
         message.setFromId(3);
+        message.setConversationId(3+"_"+model.getEntityOwnerId());
         message.setCreatedDate(new Date());
         messageService.addMessage(message);
     }

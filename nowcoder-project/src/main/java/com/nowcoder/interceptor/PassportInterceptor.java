@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
 /**
- * Created by nowcoder on 2016/7/3.
+ * 通行证拦截器，从request中检查cookie是否含有ticket，并进行hostholder的绑定
  */
 @Component
 public class PassportInterceptor implements HandlerInterceptor {
@@ -49,20 +49,22 @@ public class PassportInterceptor implements HandlerInterceptor {
             }
 
             User user = userDAO.selectById(loginTicket.getUserId());
+            /*hostholder的绑定*/
             hostHolder.setUser(user);
         }
         return true;
     }
 
     @Override
-    public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
+    public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) {
         if (modelAndView != null && hostHolder.getUser() != null) {
             modelAndView.addObject("user", hostHolder.getUser());
         }
     }
 
     @Override
-    public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
+    public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) {
+        /*每次请求完hostholder清空*/
         hostHolder.clear();
     }
 }

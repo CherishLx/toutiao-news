@@ -5,7 +5,7 @@ import com.nowcoder.model.User;
 import org.apache.ibatis.annotations.*;
 
 /**
- * Created by nowcoder on 2016/7/2.
+ * LoginTicket类
  */
 @Mapper
 public interface LoginTicketDAO {
@@ -17,9 +17,11 @@ public interface LoginTicketDAO {
             ") values (#{userId},#{expired},#{status},#{ticket})"})
     int addTicket(LoginTicket ticket);
 
+    /*查询loginTicket，字符串查询，慢查询*/
     @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where ticket=#{ticket}"})
     LoginTicket selectByTicket(String ticket);
 
+    /*更新loginTicket状态，0有效，1无效*/
     @Update({"update ", TABLE_NAME, " set status=#{status} where ticket=#{ticket}"})
     void updateStatus(@Param("ticket") String ticket, @Param("status") int status);
 }

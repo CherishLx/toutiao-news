@@ -3,9 +3,12 @@ package com.nowcoder.async;
 import java.util.List;
 
 /**
- * Created by nowcoder on 2016/7/14.
+ * 统一消费者接口
  */
 public interface EventHandler {
-    void doHandle(EventModel model);
+    /*能够处理的事件类型*/
     List<EventType> getSupportEventTypes();
+
+    /*如何处理事件*/
+    void doHandle(EventModel model);
 }

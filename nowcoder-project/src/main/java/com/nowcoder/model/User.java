@@ -1,18 +1,19 @@
 package com.nowcoder.model;
 
 /**
- * Created by nowcoder on 2016/6/26.
+ * 用户类
  */
 public class User {
     private int id;
     private String name;
     private String password;
-    private String salt;
+    private String salt;//加密字段，用于加强密码存储到数据库中
     private String headUrl;
 
     public User() {
 
     }
+
     public User(String name) {
         this.name = name;
         this.password = "";
