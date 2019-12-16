@@ -14,6 +14,7 @@ import java.util.ArrayList;
  */
 @Component
 public class ToutiaoWebConfiguration extends WebMvcConfigurerAdapter {
+
     @Autowired
     PassportInterceptor passportInterceptor;
 
